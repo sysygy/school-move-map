@@ -76,7 +76,7 @@ header p { font-size:11.5px; }
 <div class="legend-row"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="toggle-beac" checked><span style="width:14px;height:14px;background:#c9971e;opacity:0.35;border:1px solid #c9971e;display:inline-block;"></span> Beaconsfield High (approximate)</label></div>
 <div class="legend-row"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="toggle-jhgs" checked><span style="width:14px;height:14px;background:#1f4e8c;opacity:0.35;border:1px solid #1f4e8c;display:inline-block;"></span> John Hampden GS (official)</label></div>
 <div class="legend-row"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="toggle-rgs" checked><span style="width:14px;height:14px;background:#8c1f6b;opacity:0.35;border:1px solid #8c1f6b;display:inline-block;"></span> RGS (official)</label></div>
-<div class="note" style="margin-top:4px;">JHGS and RGS shapes are pulled directly from Buckinghamshire Council's own GIS service (exact boundaries, incl. the Priority Area A/B split — solid fill = Priority A, hatched/lighter = Priority B). Beaconsfield High's shape is hand-drawn from its published parish list, since Bucks Council doesn't expose a GIS layer for it — treat that one as approximate. Always confirm your exact address on the <a href="https://schools.buckinghamshire.gov.uk/school-admissions/nearest" target="_blank" rel="noopener">official checker</a> before signing a tenancy.</div>
+<div class="note" style="margin-top:4px;">JHGS and RGS shapes are pulled directly from Buckinghamshire Council's own GIS service (exact boundaries, incl. the Priority Area A/B split — solid fill = Priority A, hatched/lighter = Priority B). Beaconsfield High's shape is hand-drawn from its published parish list, since Bucks Council doesn't expose a GIS layer for it — treat that one as approximate. Always confirm your exact address on the <a href="https://schools.buckinghamshire.gov.uk/school-admissions/nearest" target="_blank" rel="noopener">official checker</a> before signing a tenancy. <b>These checkboxes now also filter the listings below</b> — a listing only stays visible if it falls inside at least one currently-checked catchment, so unchecking RGS and JHGS leaves only listings inside Beaconsfield High's catchment.</div>
 <h3 style="margin-top:12px;">Avg. driving time to Pinner High School</h3>
 <table class="commute-table">
 <tr><th>Area</th><th>Google Maps</th><th>The AA</th><th>Distance</th></tr>
@@ -101,7 +101,7 @@ header p { font-size:11.5px; }
 </table>
 <div class="note">These are single-year (Sept 2024 entry) reference points, not guarantees — qualifying distances move with applicant numbers each year. Bucks Council's checker tool explicitly supports "checking previous years' allocation results" for a longer trend; worth pulling 2-3 years before relying on a distance-based (rather than in-catchment) place.</div>
 </div>
-<h3 style="font-size:14px; margin:14px 0 8px;">Shortlisted properties (19)</h3>
+<h3 id="prop-count-heading" style="font-size:14px; margin:14px 0 8px;">Shortlisted properties (19)</h3>
 <div id="prop-list"></div>
 <div class="note">Listings pulled from Rightmove and Zoopla on 14 Jul 2026. Pins are placed at street level (agents hide exact house numbers until enquiry) — click through for the precise address and to arrange viewings.</div>
 </div>
@@ -165,6 +165,39 @@ const jhgsPriorityB = [[[[51.57218,-0.64365],[51.57,-0.64388],[51.56909,-0.6416]
 const rgsPriorityA = [[51.63445,-0.82091],[51.63223,-0.82554],[51.62893,-0.82866],[51.62423,-0.82373],[51.61392,-0.80038],[51.61153,-0.80083],[51.60895,-0.80494],[51.60347,-0.82743],[51.59794,-0.83677],[51.60976,-0.84479],[51.61509,-0.85359],[51.6166,-0.86042],[51.61599,-0.87613],[51.61762,-0.87891],[51.61647,-0.89926],[51.6175,-0.90409],[51.6193,-0.90351],[51.62016,-0.90556],[51.62403,-0.92048],[51.62501,-0.91766],[51.63257,-0.93245],[51.64165,-0.93754],[51.64655,-0.94461],[51.64833,-0.94514],[51.65074,-0.95073],[51.64979,-0.94498],[51.65216,-0.94445],[51.65211,-0.94818],[51.65378,-0.94632],[51.65429,-0.93954],[51.6526,-0.93317],[51.65316,-0.9315],[51.65531,-0.93143],[51.65575,-0.92943],[51.65144,-0.92725],[51.65469,-0.92765],[51.655,-0.92517],[51.657,-0.9231],[51.66487,-0.93221],[51.66628,-0.92935],[51.66527,-0.92861],[51.66543,-0.92489],[51.66691,-0.92491],[51.6724,-0.91773],[51.67386,-0.91003],[51.67002,-0.89704],[51.66825,-0.89475],[51.66839,-0.87771],[51.67377,-0.88413],[51.67466,-0.89507],[51.6764,-0.8979],[51.67889,-0.89432],[51.67865,-0.89102],[51.68139,-0.88676],[51.68086,-0.8799],[51.68459,-0.8819],[51.68905,-0.89265],[51.69252,-0.89477],[51.70508,-0.88656],[51.70813,-0.88968],[51.7132,-0.88777],[51.70449,-0.87599],[51.70509,-0.87291],[51.70345,-0.8709],[51.70478,-0.85244],[51.70629,-0.85439],[51.70785,-0.85318],[51.70757,-0.85103],[51.71022,-0.84798],[51.70911,-0.84725],[51.71313,-0.84577],[51.70899,-0.84494],[51.7108,-0.8421],[51.70865,-0.83848],[51.70996,-0.83391],[51.70888,-0.8311],[51.71171,-0.82716],[51.71412,-0.82727],[51.71572,-0.82428],[51.72051,-0.82439],[51.71951,-0.82287],[51.72423,-0.80782],[51.72688,-0.81175],[51.72849,-0.8063],[51.72774,-0.80383],[51.71762,-0.79452],[51.71441,-0.79369],[51.71561,-0.79569],[51.70931,-0.79245],[51.70984,-0.78856],[51.70317,-0.78143],[51.69769,-0.77035],[51.69629,-0.77214],[51.69117,-0.77395],[51.68766,-0.76602],[51.6852,-0.7663],[51.68145,-0.76184],[51.67863,-0.76295],[51.67614,-0.75744],[51.67926,-0.75855],[51.67534,-0.75429],[51.67398,-0.74805],[51.67913,-0.73628],[51.67976,-0.72461],[51.67052,-0.6916],[51.67258,-0.69114],[51.67319,-0.69219],[51.6747,-0.6898],[51.67714,-0.68898],[51.68044,-0.67656],[51.67296,-0.67674],[51.6716,-0.67498],[51.66448,-0.67819],[51.66684,-0.68335],[51.66506,-0.68088],[51.66479,-0.6817],[51.6631,-0.68054],[51.6592,-0.68911],[51.66108,-0.67925],[51.656,-0.6794],[51.65434,-0.67738],[51.6478,-0.67506],[51.64666,-0.67625],[51.64185,-0.67018],[51.64425,-0.67009],[51.64386,-0.66765],[51.64199,-0.66753],[51.64253,-0.66586],[51.63971,-0.6562],[51.6384,-0.65682],[51.63517,-0.65514],[51.63297,-0.65617],[51.63182,-0.65245],[51.63099,-0.64863],[51.63251,-0.63787],[51.63112,-0.64121],[51.62844,-0.61431],[51.62544,-0.61552],[51.62149,-0.61161],[51.61682,-0.63056],[51.61402,-0.62581],[51.6118,-0.61395],[51.6072,-0.60084],[51.60824,-0.59566],[51.60638,-0.59818],[51.60704,-0.59561],[51.60343,-0.59533],[51.60349,-0.58995],[51.60125,-0.59009],[51.59733,-0.59234],[51.58975,-0.60613],[51.58368,-0.61232],[51.57636,-0.61328],[51.57492,-0.6246],[51.58034,-0.63008],[51.58141,-0.6385],[51.57911,-0.65743],[51.57033,-0.66356],[51.57051,-0.66731],[51.57462,-0.66914],[51.57247,-0.67391],[51.56903,-0.67568],[51.56911,-0.67936],[51.57907,-0.69842],[51.58572,-0.69809],[51.58759,-0.70005],[51.59204,-0.69044],[51.59459,-0.69315],[51.5968,-0.69144],[51.59911,-0.69629],[51.60098,-0.69351],[51.60155,-0.69456],[51.59894,-0.68937],[51.6012,-0.69313],[51.60344,-0.69443],[51.60458,-0.70182],[51.60502,-0.70289],[51.60612,-0.70197],[51.60649,-0.7034],[51.60538,-0.70367],[51.61,-0.71414],[51.6109,-0.71068],[51.61194,-0.71215],[51.61598,-0.72282],[51.61452,-0.7248],[51.61771,-0.73204],[51.61634,-0.73536],[51.61851,-0.7395],[51.61809,-0.74233],[51.62043,-0.74084],[51.6224,-0.74549],[51.62475,-0.74159],[51.63171,-0.76237],[51.63346,-0.76149],[51.63497,-0.76579],[51.63541,-0.77253],[51.63693,-0.77378],[51.63922,-0.78321],[51.63792,-0.78385],[51.63927,-0.78614],[51.64,-0.7934],[51.6422,-0.79764],[51.64307,-0.80603],[51.63922,-0.80591],[51.63445,-0.82091]];
 const rgsPriorityB = [[[[51.6001,-0.51665],[51.59969,-0.5006],[51.59444,-0.49857],[51.59214,-0.49954],[51.58812,-0.49574],[51.58478,-0.49483],[51.58177,-0.4896],[51.57962,-0.48855],[51.57815,-0.48947],[51.57646,-0.48806],[51.57513,-0.48403],[51.57384,-0.48553],[51.5712,-0.48401],[51.56687,-0.48476],[51.56573,-0.48258],[51.56282,-0.48279],[51.56178,-0.48075],[51.56071,-0.48104],[51.55924,-0.47663],[51.55487,-0.47772],[51.55003,-0.4866],[51.54633,-0.48937],[51.54612,-0.49135],[51.54141,-0.49205],[51.54465,-0.49505],[51.54618,-0.49897],[51.55456,-0.51066],[51.55494,-0.51579],[51.55761,-0.52118],[51.55854,-0.52707],[51.55869,-0.53006],[51.55734,-0.52925],[51.5579,-0.53596],[51.55685,-0.53873],[51.55766,-0.54613],[51.56721,-0.543],[51.56624,-0.54557],[51.56704,-0.55138],[51.56414,-0.55369],[51.56768,-0.56261],[51.56565,-0.5644],[51.5651,-0.56297],[51.56748,-0.5701],[51.56577,-0.57551],[51.56737,-0.58155],[51.56473,-0.58274],[51.56508,-0.58448],[51.56787,-0.58282],[51.56939,-0.58498],[51.57605,-0.58254],[51.57925,-0.58277],[51.58239,-0.58755],[51.58839,-0.60759],[51.59514,-0.59572],[51.59162,-0.5863],[51.59156,-0.57664],[51.5929,-0.5743],[51.59088,-0.56478],[51.59254,-0.56473],[51.59045,-0.55844],[51.59256,-0.56191],[51.59184,-0.55878],[51.59453,-0.55511],[51.59319,-0.55431],[51.59415,-0.55454],[51.59403,-0.55008],[51.60095,-0.55221],[51.59754,-0.54956],[51.59687,-0.5464],[51.59236,-0.5436],[51.5956,-0.54071],[51.60216,-0.54118],[51.60329,-0.53889],[51.60398,-0.53936],[51.60456,-0.53739],[51.60032,-0.53425],[51.60117,-0.53018],[51.61244,-0.52702],[51.61257,-0.52928],[51.61443,-0.52791],[51.61366,-0.52624],[51.60184,-0.52059],[51.6001,-0.51665]]],[[[51.6421,-0.8033],[51.6422,-0.79764],[51.63923,-0.79057],[51.63967,-0.78802],[51.63792,-0.78385],[51.63922,-0.78321],[51.63693,-0.77378],[51.63541,-0.77253],[51.63497,-0.76579],[51.63346,-0.76149],[51.63171,-0.76237],[51.62486,-0.74184],[51.62212,-0.74546],[51.62043,-0.74084],[51.61809,-0.74233],[51.61851,-0.7395],[51.61638,-0.73329],[51.61573,-0.73548],[51.61151,-0.7347],[51.61456,-0.75339],[51.61262,-0.76859],[51.60896,-0.77091],[51.60811,-0.77344],[51.60934,-0.77615],[51.6094,-0.79112],[51.61146,-0.7977],[51.61219,-0.79635],[51.62423,-0.82373],[51.62893,-0.82866],[51.63315,-0.82388],[51.63922,-0.80591],[51.64307,-0.80603],[51.6421,-0.8033]]],[[[51.73332,-0.76348],[51.72984,-0.75098],[51.72467,-0.74904],[51.72123,-0.74568],[51.72173,-0.74256],[51.72414,-0.74238],[51.72297,-0.74156],[51.71877,-0.72825],[51.71687,-0.72993],[51.713,-0.71883],[51.70793,-0.71641],[51.7079,-0.71749],[51.70579,-0.71675],[51.70237,-0.7197],[51.70264,-0.71618],[51.70162,-0.72135],[51.70062,-0.72],[51.6982,-0.72223],[51.69537,-0.71937],[51.68681,-0.72542],[51.67941,-0.72236],[51.68019,-0.72974],[51.67913,-0.73628],[51.67398,-0.74805],[51.67534,-0.75429],[51.67926,-0.75855],[51.67614,-0.75744],[51.67863,-0.76295],[51.68145,-0.76184],[51.6852,-0.7663],[51.68766,-0.76602],[51.69117,-0.77395],[51.69629,-0.77214],[51.69769,-0.77035],[51.69882,-0.77147],[51.70317,-0.78143],[51.70984,-0.78856],[51.70931,-0.79245],[51.71561,-0.79569],[51.71441,-0.79369],[51.72079,-0.79551],[51.7225,-0.78972],[51.73319,-0.79222],[51.73139,-0.78233],[51.72901,-0.78112],[51.72706,-0.77809],[51.73113,-0.77955],[51.73119,-0.76713],[51.73435,-0.76769],[51.73332,-0.76348]]]];
 
+// --- Point-in-catchment filtering: the map-key checkboxes act as filters, not ---
+// --- just visual overlays. A listing is shown only if it falls inside at     ---
+// --- least one of the currently-checked catchment polygons (standard ray-    ---
+// --- casting / even-odd rule; jhgsPriorityB and rgsPriorityB are multi-part   ---
+// --- polygons — array of polygons, each an array of rings — so those are     ---
+// --- tested ring-by-ring and OR'd across parts).                              ---
+function pointInRing(lat, lng, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const yi = ring[i][0], xi = ring[i][1];
+    const yj = ring[j][0], xj = ring[j][1];
+    const intersect = ((yi > lat) !== (yj > lat)) &&
+      (lng < (xj - xi) * (lat - yi) / (yj - yi) + xi);
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+function pointInMultiPolygon(lat, lng, multi) {
+  return multi.some(polygon => {
+    let inside = false;
+    polygon.forEach(ring => { if (pointInRing(lat, lng, ring)) inside = !inside; });
+    return inside;
+  });
+}
+function inBeaconsfieldCatchment(p) { return pointInRing(p.lat, p.lng, beaconsfieldHighCatchment); }
+function inJHGSCatchment(p) { return pointInRing(p.lat, p.lng, jhgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, jhgsPriorityB); }
+function inRGSCatchment(p) { return pointInRing(p.lat, p.lng, rgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, rgsPriorityB); }
+properties.forEach(p => {
+  p._inBeac = inBeaconsfieldCatchment(p);
+  p._inJHGS = inJHGSCatchment(p);
+  p._inRGS = inRGSCatchment(p);
+});
+
 const map = L.map('map', { zoomControl: true }).setView([51.60, -0.55], 11);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
@@ -191,12 +224,15 @@ L.polygon(rgsPriorityB, {color:"#8c1f6b", weight:1.5, fillColor:"#8c1f6b", fillO
 
 document.getElementById('toggle-beac').addEventListener('change', e => {
 if (e.target.checked) beacPoly.addTo(map); else map.removeLayer(beacPoly);
+applyCatchmentFilter();
 });
 document.getElementById('toggle-jhgs').addEventListener('change', e => {
 if (e.target.checked) jhgsGroup.addTo(map); else map.removeLayer(jhgsGroup);
+applyCatchmentFilter();
 });
 document.getElementById('toggle-rgs').addEventListener('change', e => {
 if (e.target.checked) rgsGroup.addTo(map); else map.removeLayer(rgsGroup);
+applyCatchmentFilter();
 });
 
 function schoolIcon(color, radius){
@@ -245,6 +281,7 @@ const bounds = L.latLngBounds(schools.map(s=>[s.lat,s.lng]).concat(properties.ma
 map.fitBounds(bounds, {padding:[30,30]});
 
 const listEl = document.getElementById('prop-list');
+const propCards = [];
 properties.forEach((p, i) => {
 const div = document.createElement('div');
 div.className = 'prop-card';
@@ -262,7 +299,30 @@ map.setView([p.lat, p.lng], 15);
 propMarkers[i].openPopup();
 });
 listEl.appendChild(div);
+propCards.push(div);
 });
+
+// Apply the catchment checkboxes as a filter over the pins and sidebar cards:
+// a listing stays visible only if it's inside at least one currently-checked
+// catchment. Re-run on every checkbox change and once on initial load.
+const propCountHeading = document.getElementById('prop-count-heading');
+function applyCatchmentFilter() {
+const beacOn = document.getElementById('toggle-beac').checked;
+const jhgsOn = document.getElementById('toggle-jhgs').checked;
+const rgsOn = document.getElementById('toggle-rgs').checked;
+let visibleCount = 0;
+properties.forEach((p, i) => {
+const visible = (beacOn && p._inBeac) || (jhgsOn && p._inJHGS) || (rgsOn && p._inRGS);
+if (visible) visibleCount++;
+const marker = propMarkers[i];
+const onMap = map.hasLayer(marker);
+if (visible && !onMap) marker.addTo(map);
+if (!visible && onMap) map.removeLayer(marker);
+propCards[i].style.display = visible ? '' : 'none';
+});
+if (propCountHeading) propCountHeading.textContent = `Shortlisted properties (${visibleCount} of ${properties.length})`;
+}
+applyCatchmentFilter();
 
 // Mobile browsers sometimes finish laying out the stacked #map div (from the
 // @media rule) after Leaflet has already measured it, which leaves the tiles
