@@ -61,7 +61,7 @@
 <div id="app">
   <header>
     <h1>Where to rent: Beaconsfield High / RGS / JHGS catchment, commuting to Pinner High School</h1>
-    <p>16 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 09 Jul 2026</p>
+    <p>15 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 14 Jul 2026</p>
   </header>
   <div id="main">
     <div id="map"></div>
@@ -101,9 +101,9 @@
         </table>
         <div class="note">These are single-year (Sept 2024 entry) reference points, not guarantees — qualifying distances move with applicant numbers each year. Bucks Council's checker tool explicitly supports "checking previous years' allocation results" for a longer trend; worth pulling 2-3 years before relying on a distance-based (rather than in-catchment) place.</div>
       </div>
-      <h3 style="font-size:14px; margin:14px 0 8px;">Shortlisted properties (16)</h3>
+      <h3 style="font-size:14px; margin:14px 0 8px;">Shortlisted properties (15)</h3>
       <div id="prop-list"></div>
-      <div class="note">Listings pulled from Rightmove on 09 Jul 2026. Pins are placed at street level (Rightmove hides exact house numbers until enquiry) — click through for the precise address and to arrange viewings.</div>
+      <div class="note">Listings pulled from Rightmove on 14 Jul 2026. Pins are placed at street level (Rightmove hides exact house numbers until enquiry) — click through for the precise address and to arrange viewings.</div>
     </div>
   </div>
 </div>
@@ -116,9 +116,7 @@ const schools = [
 ];
 
 const properties = [
-  {addr:"Wycombe End, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6005022, lng:-0.6432367, price:1495, beds:2, baths:1, type:"Cottage (terraced)", agent:"Ashington Page, Beaconsfield", id:"90369690", drive:"19-23 min / 12.8 mi", desc:"Charming 2-bed cottage in Old Beaconsfield, modern kitchen, private garden. Available 4 Sept 2026."},
   {addr:"Maltings Way, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6013, lng:-0.6408, price:2450, beds:3, baths:2, type:"Terraced mews", agent:"Winkworth, Beaconsfield", id:"160174247", drive:"19-23 min / 12.8 mi", desc:"Spacious 3-bed, 2-bath mews house in the heart of Beaconsfield Old Town."},
-  {addr:"Candlemas Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6060444, lng:-0.6369125, price:2950, beds:3, baths:1, type:"Detached", agent:"Bovingdons, Beaconsfield", id:"89652756", drive:"19-23 min / 12.8 mi", desc:"3-bed detached on a 0.34-acre plot, walking distance to Old and New Town."},
   {addr:"Windsor End, Beaconsfield, HP9", area:"Beaconsfield", lat:51.598486, lng:-0.635078, price:3100, beds:3, baths:2, type:"End of terrace", agent:"Bovingdons, Beaconsfield", id:"90071061", drive:"19-23 min / 12.8 mi", desc:"3-bed mews-style cottage in a small gated development off Windsor End."},
   {addr:"Shrimpton Close, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6248278, lng:-0.6466719, price:3200, beds:5, baths:2, type:"Detached", agent:"Winkworth, Beaconsfield", id:"89958153", drive:"19-23 min / 12.8 mi", desc:"5-bed detached on a quiet cul-de-sac close to open countryside."},
   {addr:"Howard Crescent, Seer Green, HP9", area:"Seer Green", lat:51.6204842, lng:-0.6072469, price:3500, beds:3, baths:2, type:"Detached", agent:"Ashington Page, Beaconsfield", id:"173862131", drive:"23-27 min / 14.3-14.8 mi", desc:"3-bed detached, 3 receptions, garden office, double garage. At the top of budget."},
@@ -126,12 +124,13 @@ const properties = [
   {addr:"Oak End Way, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.58784, lng:-0.5482287, price:2550, beds:3, baths:2, type:"Semi-detached", agent:"The Frost Partnership, Gerrards Cross", id:"89437350", drive:"20-23 min / 8.6-9.0 mi", desc:"2/3-bed house in the heart of Gerrards Cross with enclosed garden."},
   {addr:"Bentinck Close, Gerrards Cross", area:"Gerrards Cross", lat:51.5896548, lng:-0.5638865, price:2775, beds:3, baths:1, type:"End of terrace", agent:"Foreman King, Farnham Common", id:"164581136", drive:"20-23 min / 8.6-9.0 mi", desc:"3-bed Georgian-style home, gated footpath shortcut to town centre and station."},
   {addr:"Moorfield Road, Denham", area:"Denham", lat:51.5819657, lng:-0.4967109, price:2350, beds:3, baths:1, type:"Semi-detached", agent:"Andrews Residential, Hillingdon", id:"89472348", drive:"14 min / 6.0 mi", desc:"Immaculate 3-bed semi, close to Denham Green train station, off-street parking, garden, garage."},
-  {addr:"Moorfield Road, Denham, UB9", area:"Denham", lat:51.5819657, lng:-0.4967109, price:2350, beds:3, baths:1, type:"Semi-detached", agent:"Gibbs Gillespie, Gerrards Cross", id:"89067132", drive:"14 min / 6.0 mi", desc:"Modern semi-detached house in town. Garden, conservatory, off-street parking, garage."},
+  {addr:"Moorfield Road, Denham, UB9", area:"Denham", lat:51.5819657, lng:-0.4967109, price:2350, beds:3, baths:1, type:"Semi-detached", agent:"Gibbs Gillespie, Gerrards Cross", id:"89067132", drive:"14 min / 6.0 mi", desc:"Modern semi-detached house in town. Garden, conservatory, off-street parking, garage. Price reduced."},
   {addr:"Woodhurst Drive, Denham Green", area:"Denham", lat:51.5864884, lng:-0.5056679, price:2250, beds:3, baths:2, type:"Semi-detached", agent:"Carter Duthie, Denham", id:"89579613", drive:"14 min / 6.0 mi", desc:"3 double-bed family home overlooking woodland, one of Denham Green's most prestigious roads."},
-  {addr:"Southlands Road, Denham", area:"Denham", lat:51.565787, lng:-0.50329, price:2750, beds:3, baths:1, type:"Semi-detached", agent:"Carter Duthie, Denham", id:"89336061", drive:"14 min / 6.0 mi", desc:"Newly renovated 3-bed family home, brand new kitchen and bathroom throughout."},
+  {addr:"Southlands Road, Denham", area:"Denham", lat:51.557864, lng:-0.5053055, price:2750, beds:3, baths:1, type:"Semi-detached", agent:"Carter Duthie, Denham", id:"89336061", drive:"14 min / 6.0 mi", desc:"Newly renovated 3-bed family home, brand new kitchen and bathroom throughout."},
   {addr:"Orchard Close, New Denham, UB9", area:"Denham", lat:51.553564, lng:-0.4907375, price:2300, beds:3, baths:2, type:"Terraced", agent:"Stones Property, Hillingdon", id:"88390728", drive:"14 min / 6.0 mi", desc:"Spacious 3-bed on a private gated road, driveway parking, private rear garden."},
   {addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3300, beds:4, baths:3, type:"House", agent:"Sky Horizon, London", id:"90067080", drive:"14 min / 6.0 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development."},
-  {addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3500, beds:4, baths:3, type:"Terraced", agent:"Sky Horizon, London", id:"172537796", drive:"14 min / 6.0 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development. At budget cap."}
+  {addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3500, beds:4, baths:3, type:"Terraced", agent:"Sky Horizon, London", id:"172537796", drive:"14 min / 6.0 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development. At budget cap."},
+  {addr:"Orchard Close, Denham, Uxbridge, UB9", area:"Denham", lat:51.553564, lng:-0.4907375, price:2400, beds:3, baths:2, type:"Terraced", agent:"Coopers, Hillingdon", id:"90706971", drive:"20-21 min / 6.0 mi", desc:"Well-presented 3-bed mid-terrace in a gated development, walking distance to Uxbridge Underground station, easy M4/M40/M25 access."}
 ];
 
 const areaBadge = {"Beaconsfield":"b-beac","Seer Green":"b-seer","Gerrards Cross":"b-gx","Denham":"b-den"};
