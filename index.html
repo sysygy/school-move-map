@@ -61,7 +61,7 @@ header p { font-size:11.5px; }
 <div id="app">
 <header>
 <h1>Where to rent: Beaconsfield High / RGS / JHGS catchment, commuting to Pinner High School</h1>
-<p>19 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 14 Jul 2026</p>
+<p>19 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 15 Jul 2026</p>
 </header>
 <div id="main">
 <div id="map"></div>
@@ -166,36 +166,36 @@ const rgsPriorityA = [[51.63445,-0.82091],[51.63223,-0.82554],[51.62893,-0.82866
 const rgsPriorityB = [[[[51.6001,-0.51665],[51.59969,-0.5006],[51.59444,-0.49857],[51.59214,-0.49954],[51.58812,-0.49574],[51.58478,-0.49483],[51.58177,-0.4896],[51.57962,-0.48855],[51.57815,-0.48947],[51.57646,-0.48806],[51.57513,-0.48403],[51.57384,-0.48553],[51.5712,-0.48401],[51.56687,-0.48476],[51.56573,-0.48258],[51.56282,-0.48279],[51.56178,-0.48075],[51.56071,-0.48104],[51.55924,-0.47663],[51.55487,-0.47772],[51.55003,-0.4866],[51.54633,-0.48937],[51.54612,-0.49135],[51.54141,-0.49205],[51.54465,-0.49505],[51.54618,-0.49897],[51.55456,-0.51066],[51.55494,-0.51579],[51.55761,-0.52118],[51.55854,-0.52707],[51.55869,-0.53006],[51.55734,-0.52925],[51.5579,-0.53596],[51.55685,-0.53873],[51.55766,-0.54613],[51.56721,-0.543],[51.56624,-0.54557],[51.56704,-0.55138],[51.56414,-0.55369],[51.56768,-0.56261],[51.56565,-0.5644],[51.5651,-0.56297],[51.56748,-0.5701],[51.56577,-0.57551],[51.56737,-0.58155],[51.56473,-0.58274],[51.56508,-0.58448],[51.56787,-0.58282],[51.56939,-0.58498],[51.57605,-0.58254],[51.57925,-0.58277],[51.58239,-0.58755],[51.58839,-0.60759],[51.59514,-0.59572],[51.59162,-0.5863],[51.59156,-0.57664],[51.5929,-0.5743],[51.59088,-0.56478],[51.59254,-0.56473],[51.59045,-0.55844],[51.59256,-0.56191],[51.59184,-0.55878],[51.59453,-0.55511],[51.59319,-0.55431],[51.59415,-0.55454],[51.59403,-0.55008],[51.60095,-0.55221],[51.59754,-0.54956],[51.59687,-0.5464],[51.59236,-0.5436],[51.5956,-0.54071],[51.60216,-0.54118],[51.60329,-0.53889],[51.60398,-0.53936],[51.60456,-0.53739],[51.60032,-0.53425],[51.60117,-0.53018],[51.61244,-0.52702],[51.61257,-0.52928],[51.61443,-0.52791],[51.61366,-0.52624],[51.60184,-0.52059],[51.6001,-0.51665]]],[[[51.6421,-0.8033],[51.6422,-0.79764],[51.63923,-0.79057],[51.63967,-0.78802],[51.63792,-0.78385],[51.63922,-0.78321],[51.63693,-0.77378],[51.63541,-0.77253],[51.63497,-0.76579],[51.63346,-0.76149],[51.63171,-0.76237],[51.62486,-0.74184],[51.62212,-0.74546],[51.62043,-0.74084],[51.61809,-0.74233],[51.61851,-0.7395],[51.61638,-0.73329],[51.61573,-0.73548],[51.61151,-0.7347],[51.61456,-0.75339],[51.61262,-0.76859],[51.60896,-0.77091],[51.60811,-0.77344],[51.60934,-0.77615],[51.6094,-0.79112],[51.61146,-0.7977],[51.61219,-0.79635],[51.62423,-0.82373],[51.62893,-0.82866],[51.63315,-0.82388],[51.63922,-0.80591],[51.64307,-0.80603],[51.6421,-0.8033]]],[[[51.73332,-0.76348],[51.72984,-0.75098],[51.72467,-0.74904],[51.72123,-0.74568],[51.72173,-0.74256],[51.72414,-0.74238],[51.72297,-0.74156],[51.71877,-0.72825],[51.71687,-0.72993],[51.713,-0.71883],[51.70793,-0.71641],[51.7079,-0.71749],[51.70579,-0.71675],[51.70237,-0.7197],[51.70264,-0.71618],[51.70162,-0.72135],[51.70062,-0.72],[51.6982,-0.72223],[51.69537,-0.71937],[51.68681,-0.72542],[51.67941,-0.72236],[51.68019,-0.72974],[51.67913,-0.73628],[51.67398,-0.74805],[51.67534,-0.75429],[51.67926,-0.75855],[51.67614,-0.75744],[51.67863,-0.76295],[51.68145,-0.76184],[51.6852,-0.7663],[51.68766,-0.76602],[51.69117,-0.77395],[51.69629,-0.77214],[51.69769,-0.77035],[51.69882,-0.77147],[51.70317,-0.78143],[51.70984,-0.78856],[51.70931,-0.79245],[51.71561,-0.79569],[51.71441,-0.79369],[51.72079,-0.79551],[51.7225,-0.78972],[51.73319,-0.79222],[51.73139,-0.78233],[51.72901,-0.78112],[51.72706,-0.77809],[51.73113,-0.77955],[51.73119,-0.76713],[51.73435,-0.76769],[51.73332,-0.76348]]]];
 
 // --- Point-in-catchment filtering: the map-key checkboxes act as filters, not ---
-// --- just visual overlays. A listing is shown only if it falls inside at     ---
-// --- least one of the currently-checked catchment polygons (standard ray-    ---
-// --- casting / even-odd rule; jhgsPriorityB and rgsPriorityB are multi-part   ---
-// --- polygons — array of polygons, each an array of rings — so those are     ---
-// --- tested ring-by-ring and OR'd across parts).                              ---
+// --- just visual overlays. A listing is shown only if it falls inside at ---
+// --- least one of the currently-checked catchment polygons (standard ray- ---
+// --- casting / even-odd rule; jhgsPriorityB and rgsPriorityB are multi-part ---
+// --- polygons — array of polygons, each an array of rings — so those are ---
+// --- tested ring-by-ring and OR'd across parts). ---
 function pointInRing(lat, lng, ring) {
-  let inside = false;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const yi = ring[i][0], xi = ring[i][1];
-    const yj = ring[j][0], xj = ring[j][1];
-    const intersect = ((yi > lat) !== (yj > lat)) &&
-      (lng < (xj - xi) * (lat - yi) / (yj - yi) + xi);
-    if (intersect) inside = !inside;
-  }
-  return inside;
+let inside = false;
+for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+const yi = ring[i][0], xi = ring[i][1];
+const yj = ring[j][0], xj = ring[j][1];
+const intersect = ((yi > lat) !== (yj > lat)) &&
+(lng < (xj - xi) * (lat - yi) / (yj - yi) + xi);
+if (intersect) inside = !inside;
+}
+return inside;
 }
 function pointInMultiPolygon(lat, lng, multi) {
-  return multi.some(polygon => {
-    let inside = false;
-    polygon.forEach(ring => { if (pointInRing(lat, lng, ring)) inside = !inside; });
-    return inside;
-  });
+return multi.some(polygon => {
+let inside = false;
+polygon.forEach(ring => { if (pointInRing(lat, lng, ring)) inside = !inside; });
+return inside;
+});
 }
 function inBeaconsfieldCatchment(p) { return pointInRing(p.lat, p.lng, beaconsfieldHighCatchment); }
 function inJHGSCatchment(p) { return pointInRing(p.lat, p.lng, jhgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, jhgsPriorityB); }
 function inRGSCatchment(p) { return pointInRing(p.lat, p.lng, rgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, rgsPriorityB); }
 properties.forEach(p => {
-  p._inBeac = inBeaconsfieldCatchment(p);
-  p._inJHGS = inJHGSCatchment(p);
-  p._inRGS = inRGSCatchment(p);
+p._inBeac = inBeaconsfieldCatchment(p);
+p._inJHGS = inJHGSCatchment(p);
+p._inRGS = inRGSCatchment(p);
 });
 
 const map = L.map('map', { zoomControl: true }).setView([51.60, -0.55], 11);
