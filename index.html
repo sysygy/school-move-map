@@ -61,7 +61,7 @@ header p { font-size:11.5px; }
 <div id="app">
 <header>
 <h1>Where to rent: Beaconsfield High / RGS / JHGS catchment, commuting to Pinner High School</h1>
-<p>21 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 16 Jul 2026</p>
+<p>19 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 14 Jul 2026</p>
 </header>
 <div id="main">
 <div id="map"></div>
@@ -77,15 +77,15 @@ header p { font-size:11.5px; }
 <div class="legend-row"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="toggle-jhgs" checked><span style="width:14px;height:14px;background:#1f4e8c;opacity:0.35;border:1px solid #1f4e8c;display:inline-block;"></span> John Hampden GS (official)</label></div>
 <div class="legend-row"><label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="toggle-rgs" checked><span style="width:14px;height:14px;background:#8c1f6b;opacity:0.35;border:1px solid #8c1f6b;display:inline-block;"></span> RGS (official)</label></div>
 <div class="note" style="margin-top:4px;">JHGS and RGS shapes are pulled directly from Buckinghamshire Council's own GIS service (exact boundaries, incl. the Priority Area A/B split — solid fill = Priority A, hatched/lighter = Priority B). Beaconsfield High's shape is hand-drawn from its published parish list, since Bucks Council doesn't expose a GIS layer for it — treat that one as approximate. Always confirm your exact address on the <a href="https://schools.buckinghamshire.gov.uk/school-admissions/nearest" target="_blank" rel="noopener">official checker</a> before signing a tenancy. <b>These checkboxes now also filter the listings below</b> — a listing only stays visible if it falls inside at least one currently-checked catchment, so unchecking RGS and JHGS leaves only listings inside Beaconsfield High's catchment.</div>
-<h3 style="margin-top:12px;">Avg. driving time to Pinner High School</h3>
+<h3 style="margin-top:12px;">Realistic rush-hour driving time to Pinner High School</h3>
 <table class="commute-table">
-<tr><th>Area</th><th>Google Maps</th><th>The AA</th><th>Distance</th></tr>
-<tr><td>Denham</td><td>14 min</td><td>—</td><td>6.0 mi</td></tr>
-<tr><td>Gerrards Cross</td><td>20 min</td><td>23 min</td><td>8.6–9.0 mi</td></tr>
-<tr><td>Beaconsfield</td><td>19–20 min</td><td>23 min</td><td>12.8 mi</td></tr>
-<tr><td>Seer Green</td><td>23 min</td><td>27 min</td><td>14.3–14.8 mi</td></tr>
+<tr><th>Area</th><th>AM (arrive 8:30)</th><th>PM (leave 15:30)</th><th>Distance</th></tr>
+<tr><td>Denham</td><td>22–26 min</td><td>21–24 min</td><td>5.8–7.7 mi</td></tr>
+<tr><td>Gerrards Cross</td><td>27–30 min</td><td>25–28 min</td><td>8.4–10.8 mi</td></tr>
+<tr><td>Beaconsfield</td><td>32–38 min</td><td>29–35 min</td><td>13.2–15.8 mi</td></tr>
+<tr><td>Seer Green</td><td>37 min</td><td>34 min</td><td>15.1–16.0 mi</td></tr>
 </table>
-<div class="note">Cross-checked against two independent routers (Google Maps live traffic + The AA route planner; AA cross-check not completed for Denham). Denham is fastest by a clear margin — shortest distance and a quicker road (Swakeleys Rd/B467) than the others. Gerrards Cross and Beaconsfield come out similar despite the 4-mile gap because Beaconsfield's route is almost all M40 motorway, while the shorter Gerrards Cross route runs on the slower A40/Oxford Road through Denham, Ickenham and Ruislip. School-run traffic (~8:15am / ~3:30pm) typically adds 5–10 min each way on top of these figures.</div>
+<div class="note">These are live-traffic-adjusted times, not the generic "typical traffic" figure Google/Bing show by default — that figure is computed for whatever quiet moment you happen to query it, and understates the real school run. Each figure here was queried on Bing Maps with a fixed future departure/arrival time (a representative term-time Tuesday), asking "arrive by 8:30am" for the drop-off leg and "leave at 3:30pm" for the pickup leg — this forces the router to price in actual rush-hour congestion (Bing's scheduler only offers 30-min slots, so 8:30/15:30 are the closest to the real 8:20am drop-off / 3:20pm pickup). Delays baked into these numbers ran 5–11 min above the no-traffic baseline. Per-property AM/PM figures are shown on each listing below; this table is the area-level min–max range.</div>
 </div>
 <div class="legend-box">
 <h3>Catchment logic</h3>
@@ -101,9 +101,9 @@ header p { font-size:11.5px; }
 </table>
 <div class="note">These are single-year (Sept 2024 entry) reference points, not guarantees — qualifying distances move with applicant numbers each year. Bucks Council's checker tool explicitly supports "checking previous years' allocation results" for a longer trend; worth pulling 2-3 years before relying on a distance-based (rather than in-catchment) place.</div>
 </div>
-<h3 id="prop-count-heading" style="font-size:14px; margin:14px 0 8px;">Shortlisted properties (21)</h3>
+<h3 id="prop-count-heading" style="font-size:14px; margin:14px 0 8px;">Shortlisted properties (19)</h3>
 <div id="prop-list"></div>
-<div class="note">Listings pulled from Rightmove and Zoopla on 16 Jul 2026. Pins are placed at street level (agents hide exact house numbers until enquiry) — click through for the precise address and to arrange viewings.</div>
+<div class="note">Listings pulled from Rightmove and Zoopla on 14 Jul 2026. Pins are placed at street level (agents hide exact house numbers until enquiry) — click through for the precise address and to arrange viewings.</div>
 </div>
 </div>
 </div>
@@ -116,27 +116,25 @@ const schools = [
 ];
 
 const properties = [
-{addr:"Maltings Way, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6013, lng:-0.6408, price:2450, beds:3, baths:2, type:"Terraced mews", agent:"Winkworth, Beaconsfield", id:"160174247", drive:"19-23 min / 12.8 mi", desc:"Spacious 3-bed, 2-bath mews house in the heart of Beaconsfield Old Town.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/160174247#/?channel=RES_LET"},
-{addr:"Windsor End, Beaconsfield, HP9", area:"Beaconsfield", lat:51.598486, lng:-0.635078, price:3100, beds:3, baths:2, type:"End of terrace", agent:"Bovingdons, Beaconsfield", id:"90071061", drive:"19-23 min / 12.8 mi", desc:"3-bed mews-style cottage in a small gated development off Windsor End.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90071061#/?channel=RES_LET"},
-{addr:"Shrimpton Close, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6248278, lng:-0.6466719, price:3200, beds:5, baths:2, type:"Detached", agent:"Winkworth, Beaconsfield", id:"89958153", drive:"19-23 min / 12.8 mi", desc:"5-bed detached on a quiet cul-de-sac close to open countryside.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89958153#/?channel=RES_LET"},
-{addr:"Candlemas Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6060444, lng:-0.6369125, price:2950, beds:3, baths:1, type:"Detached", agent:"Bartrams, Beaconsfield", id:"72770477", drive:"24 min / 13.1-13.7 mi", desc:"Charming 1950s 3/4-bed detached family home on a 0.34-acre plot, garage, large rear garden. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/72770477/"},
-{addr:"Meadow Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6066444, lng:-0.6344409, price:3500, beds:4, baths:2, type:"Detached", agent:"Tim Russ & Co, Beaconsfield", id:"90938445", drive:"28-29 min / 13.1-13.6 mi", desc:"Beautifully presented modern 4-bed, 2-bath detached house in a quiet residential private road, convenient for Old Town and New Town. At budget cap.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90938445#/?channel=RES_LET"},
-{addr:"Howard Crescent, Seer Green, HP9", area:"Seer Green", lat:51.6204842, lng:-0.6072469, price:2100, beds:2, baths:1, type:"Detached bungalow", agent:"Tim Russ & Co, Beaconsfield", id:"73707605", drive:"28 min / 15.0 mi", desc:"No onward chain, detached bungalow, two double bedrooms, 25ft sitting/dining room, garage. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/73707605/"},
-{addr:"Pinewood Close, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.5791131, lng:-0.5540325, price:2300, beds:2, baths:1, type:"Terraced", agent:"Gibbs Gillespie, Gerrards Cross", id:"89750142", drive:"20-23 min / 8.6-9.0 mi", desc:"2 double-bedroom cottage in a pleasant cul-de-sac.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89750142#/?channel=RES_LET"},
-{addr:"Oak End Way, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.58784, lng:-0.5482287, price:2550, beds:3, baths:2, type:"Semi-detached", agent:"The Frost Partnership, Gerrards Cross", id:"89437350", drive:"20-23 min / 8.6-9.0 mi", desc:"2/3-bed house in the heart of Gerrards Cross with enclosed garden.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89437350#/?channel=RES_LET"},
-{addr:"Bentinck Close, Gerrards Cross", area:"Gerrards Cross", lat:51.5896548, lng:-0.5638865, price:2775, beds:3, baths:1, type:"End of terrace", agent:"Foreman King, Farnham Common", id:"164581136", drive:"20-23 min / 8.6-9.0 mi", desc:"3-bed Georgian-style home, gated footpath shortcut to town centre and station.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/164581136#/?channel=RES_LET"},
-{addr:"Maltmans Lane, Chalfont St. Peter, SL9", area:"Gerrards Cross", lat:51.5970467, lng:-0.5655014, price:3500, beds:3, baths:2, type:"Detached bungalow", agent:"Gibbs Gillespie, Gerrards Cross", id:"89907270", drive:"26-29 min / 9.8-12.6 mi", desc:"Three-bedroom detached chalet bungalow in a quiet secluded position behind private gates, views over fields. At budget cap.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89907270#/?channel=RES_LET"},
-{addr:"Joiners Way, Chalfont St Peter, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.609387, lng:-0.5509777, price:2300, beds:3, baths:1, type:"Terraced", agent:"Frost Partnership, Chalfont St Peter", id:"62352549", drive:"23 min / 10.0 mi", desc:"3-bed terraced home in a cul-de-sac, walking distance to the village, off-road parking. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/62352549/"},
-{addr:"Moorfield Road, Denham", area:"Denham", lat:51.5819657, lng:-0.4967109, price:2350, beds:3, baths:1, type:"Semi-detached", agent:"Andrews Residential, Hillingdon", id:"89472348", drive:"14 min / 6.0 mi", desc:"Immaculate 3-bed semi, close to Denham Green train station, off-street parking, garden, garage.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89472348#/?channel=RES_LET"},
-{addr:"Moorfield Road, Denham, UB9", area:"Denham", lat:51.5819657, lng:-0.4967109, price:2350, beds:3, baths:1, type:"Semi-detached", agent:"Gibbs Gillespie, Gerrards Cross", id:"89067132", drive:"14 min / 6.0 mi", desc:"Modern semi-detached house in town. Garden, conservatory, off-street parking, garage. Price reduced.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89067132#/?channel=RES_LET"},
-{addr:"Woodhurst Drive, Denham Green", area:"Denham", lat:51.5864884, lng:-0.5056679, price:2250, beds:3, baths:2, type:"Semi-detached", agent:"Carter Duthie, Denham", id:"89579613", drive:"14 min / 6.0 mi", desc:"3 double-bed family home overlooking woodland, one of Denham Green's most prestigious roads.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89579613#/?channel=RES_LET"},
-{addr:"Southlands Road, Denham", area:"Denham", lat:51.557864, lng:-0.5053055, price:2750, beds:3, baths:1, type:"Semi-detached", agent:"Carter Duthie, Denham", id:"89336061", drive:"14 min / 6.0 mi", desc:"Newly renovated 3-bed family home, brand new kitchen and bathroom throughout.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89336061#/?channel=RES_LET"},
-{addr:"Orchard Close, New Denham, UB9", area:"Denham", lat:51.553564, lng:-0.4907375, price:2300, beds:3, baths:2, type:"Terraced", agent:"Stones Property, Hillingdon", id:"88390728", drive:"14 min / 6.0 mi", desc:"Spacious 3-bed on a private gated road, driveway parking, private rear garden.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/88390728#/?channel=RES_LET"},
-{addr:"Newtown Road, New Denham, UB9", area:"Denham", lat:51.5527843, lng:-0.4908978, price:2300, beds:3, baths:2, type:"Detached", agent:"OpenRent, London", id:"73676504", drive:"19 min / 6.0-6.6 mi", desc:"Detached home with study and 20x20ft games/gym room, high-ceiling lounge, private garden, EV charging. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/73676504/"},
-{addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3300, beds:4, baths:3, type:"House", agent:"Sky Horizon, London", id:"90067080", drive:"14 min / 6.0 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90067080#/?channel=RES_LET"},
-{addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3500, beds:4, baths:3, type:"Terraced", agent:"Sky Horizon, London", id:"172537796", drive:"14 min / 6.0 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development. At budget cap.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/172537796#/?channel=RES_LET"},
-{addr:"Orchard Close, Denham, Uxbridge, UB9", area:"Denham", lat:51.553564, lng:-0.4907375, price:2400, beds:3, baths:2, type:"Terraced", agent:"Coopers, Hillingdon", id:"90706971", drive:"20-21 min / 6.0 mi", desc:"Well-presented 3-bed mid-terrace in a gated development, walking distance to Uxbridge Underground station, easy M4/M40/M25 access.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90706971#/?channel=RES_LET"},
-{addr:"Celia Johnson Close, Denham, Uxbridge, UB9", area:"Denham", lat:51.5875444, lng:-0.4979566, price:3250, beds:4, baths:3, type:"Semi-detached", agent:"Gibbs Gillespie, Gerrards Cross", id:"90909279", drive:"23-25 min / 6.8-8.1 mi", desc:"Contemporary semi-detached townhouse, 4 bedrooms, west-facing garden, off-street parking and garage.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90909279#/?channel=RES_LET"}
+{addr:"Maltings Way, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6013, lng:-0.6408, price:2450, beds:3, baths:2, type:"Terraced mews", agent:"Winkworth, Beaconsfield", id:"160174247", drive:"AM 32 min / PM 30 min · 13.2-13.8 mi", desc:"Spacious 3-bed, 2-bath mews house in the heart of Beaconsfield Old Town.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/160174247#/?channel=RES_LET"},
+{addr:"Windsor End, Beaconsfield, HP9", area:"Beaconsfield", lat:51.598486, lng:-0.635078, price:3100, beds:3, baths:2, type:"End of terrace", agent:"Bovingdons, Beaconsfield", id:"90071061", drive:"AM 32 min / PM 30 min · 13.3-13.9 mi", desc:"3-bed mews-style cottage in a small gated development off Windsor End.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90071061#/?channel=RES_LET"},
+{addr:"Shrimpton Close, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6248278, lng:-0.6466719, price:3200, beds:5, baths:2, type:"Detached", agent:"Winkworth, Beaconsfield", id:"89958153", drive:"AM 38 min / PM 35 min · 15.2-15.8 mi", desc:"5-bed detached on a quiet cul-de-sac close to open countryside.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89958153#/?channel=RES_LET"},
+{addr:"Candlemas Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6060444, lng:-0.6369125, price:2950, beds:3, baths:1, type:"Detached", agent:"Bartrams, Beaconsfield", id:"72770477", drive:"AM 32 min / PM 29 min · 13.2-13.8 mi", desc:"Charming 1950s 3/4-bed detached family home on a 0.34-acre plot, garage, large rear garden. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/72770477/"},
+{addr:"Howard Crescent, Seer Green, HP9", area:"Seer Green", lat:51.6204842, lng:-0.6072469, price:3500, beds:3, baths:2, type:"Detached", agent:"Ashington Page, Beaconsfield", id:"173862131", drive:"AM 37 min / PM 34 min · 15.1-16.0 mi", desc:"3-bed detached, 3 receptions, garden office, double garage. At the top of budget.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/173862131#/?channel=RES_LET"},
+{addr:"Howard Crescent, Seer Green, HP9", area:"Seer Green", lat:51.6204842, lng:-0.6072469, price:2100, beds:2, baths:1, type:"Detached bungalow", agent:"Tim Russ & Co, Beaconsfield", id:"73707605", drive:"AM 37 min / PM 34 min · 15.1-16.0 mi", desc:"No onward chain, detached bungalow, two double bedrooms, 25ft sitting/dining room, garage. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/73707605/"},
+{addr:"Pinewood Close, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.5791131, lng:-0.5540325, price:2300, beds:2, baths:1, type:"Terraced", agent:"Gibbs Gillespie, Gerrards Cross", id:"89750142", drive:"AM 27 min / PM 25 min · 8.4-8.5 mi", desc:"2 double-bedroom cottage in a pleasant cul-de-sac.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89750142#/?channel=RES_LET"},
+{addr:"Oak End Way, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.58784, lng:-0.5482287, price:2550, beds:3, baths:2, type:"Semi-detached", agent:"The Frost Partnership, Gerrards Cross", id:"89437350", drive:"AM 29 min / PM 25 min · 8.7-9.0 mi", desc:"2/3-bed house in the heart of Gerrards Cross with enclosed garden.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89437350#/?channel=RES_LET"},
+{addr:"Bentinck Close, Gerrards Cross", area:"Gerrards Cross", lat:51.5896548, lng:-0.5638865, price:2775, beds:3, baths:1, type:"End of terrace", agent:"Foreman King, Farnham Common", id:"164581136", drive:"AM 30 min / PM 28 min · 9.2-9.9 mi", desc:"3-bed Georgian-style home, gated footpath shortcut to town centre and station.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/164581136#/?channel=RES_LET"},
+{addr:"Joiners Way, Chalfont St Peter, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.609387, lng:-0.5509777, price:2300, beds:3, baths:1, type:"Terraced", agent:"Frost Partnership, Chalfont St Peter", id:"62352549", drive:"AM 29 min / PM 27 min · 10.1-10.8 mi", desc:"3-bed terraced home in a cul-de-sac, walking distance to the village, off-road parking. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/62352549/"},
+{addr:"Moorfield Road, Denham", area:"Denham", lat:51.5819657, lng:-0.4967109, price:2350, beds:3, baths:1, type:"Semi-detached", agent:"Andrews Residential, Hillingdon", id:"89472348", drive:"AM 22 min / PM 21 min · 6.5-6.8 mi", desc:"Immaculate 3-bed semi, close to Denham Green train station, off-street parking, garden, garage.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89472348#/?channel=RES_LET"},
+{addr:"Moorfield Road, Denham, UB9", area:"Denham", lat:51.5819657, lng:-0.4967109, price:2350, beds:3, baths:1, type:"Semi-detached", agent:"Gibbs Gillespie, Gerrards Cross", id:"89067132", drive:"AM 22 min / PM 21 min · 6.5-6.8 mi", desc:"Modern semi-detached house in town. Garden, conservatory, off-street parking, garage. Price reduced.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89067132#/?channel=RES_LET"},
+{addr:"Woodhurst Drive, Denham Green", area:"Denham", lat:51.5864884, lng:-0.5056679, price:2250, beds:3, baths:2, type:"Semi-detached", agent:"Carter Duthie, Denham", id:"89579613", drive:"AM 26 min / PM 24 min · 7.4-7.7 mi", desc:"3 double-bed family home overlooking woodland, one of Denham Green's most prestigious roads.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89579613#/?channel=RES_LET"},
+{addr:"Southlands Road, Denham", area:"Denham", lat:51.557864, lng:-0.5053055, price:2750, beds:3, baths:1, type:"Semi-detached", agent:"Carter Duthie, Denham", id:"89336061", drive:"AM 24 min / PM 21 min · 6.3-6.9 mi", desc:"Newly renovated 3-bed family home, brand new kitchen and bathroom throughout.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89336061#/?channel=RES_LET"},
+{addr:"Orchard Close, New Denham, UB9", area:"Denham", lat:51.553564, lng:-0.4907375, price:2300, beds:3, baths:2, type:"Terraced", agent:"Stones Property, Hillingdon", id:"88390728", drive:"AM 24 min / PM 22 min · 6.1-6.6 mi", desc:"Spacious 3-bed on a private gated road, driveway parking, private rear garden.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/88390728#/?channel=RES_LET"},
+{addr:"Newtown Road, New Denham, UB9", area:"Denham", lat:51.5527843, lng:-0.4908978, price:2300, beds:3, baths:2, type:"Detached", agent:"OpenRent, London", id:"73676504", drive:"AM 23 min / PM 21 min · 6.1-6.6 mi", desc:"Detached home with study and 20x20ft games/gym room, high-ceiling lounge, private garden, EV charging. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/73676504/"},
+{addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3300, beds:4, baths:3, type:"House", agent:"Sky Horizon, London", id:"90067080", drive:"AM 24 min / PM 22 min · 5.8-6.8 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90067080#/?channel=RES_LET"},
+{addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3500, beds:4, baths:3, type:"Terraced", agent:"Sky Horizon, London", id:"172537796", drive:"AM 24 min / PM 22 min · 5.8-6.8 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development. At budget cap.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/172537796#/?channel=RES_LET"},
+{addr:"Orchard Close, Denham, Uxbridge, UB9", area:"Denham", lat:51.553564, lng:-0.4907375, price:2400, beds:3, baths:2, type:"Terraced", agent:"Coopers, Hillingdon", id:"90706971", drive:"AM 24 min / PM 22 min · 6.1-6.6 mi", desc:"Well-presented 3-bed mid-terrace in a gated development, walking distance to Uxbridge Underground station, easy M4/M40/M25 access.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90706971#/?channel=RES_LET"}
 ];
 
 const areaBadge = {"Beaconsfield":"b-beac","Seer Green":"b-seer","Gerrards Cross":"b-gx","Denham":"b-den"};
@@ -168,36 +166,36 @@ const rgsPriorityA = [[51.63445,-0.82091],[51.63223,-0.82554],[51.62893,-0.82866
 const rgsPriorityB = [[[[51.6001,-0.51665],[51.59969,-0.5006],[51.59444,-0.49857],[51.59214,-0.49954],[51.58812,-0.49574],[51.58478,-0.49483],[51.58177,-0.4896],[51.57962,-0.48855],[51.57815,-0.48947],[51.57646,-0.48806],[51.57513,-0.48403],[51.57384,-0.48553],[51.5712,-0.48401],[51.56687,-0.48476],[51.56573,-0.48258],[51.56282,-0.48279],[51.56178,-0.48075],[51.56071,-0.48104],[51.55924,-0.47663],[51.55487,-0.47772],[51.55003,-0.4866],[51.54633,-0.48937],[51.54612,-0.49135],[51.54141,-0.49205],[51.54465,-0.49505],[51.54618,-0.49897],[51.55456,-0.51066],[51.55494,-0.51579],[51.55761,-0.52118],[51.55854,-0.52707],[51.55869,-0.53006],[51.55734,-0.52925],[51.5579,-0.53596],[51.55685,-0.53873],[51.55766,-0.54613],[51.56721,-0.543],[51.56624,-0.54557],[51.56704,-0.55138],[51.56414,-0.55369],[51.56768,-0.56261],[51.56565,-0.5644],[51.5651,-0.56297],[51.56748,-0.5701],[51.56577,-0.57551],[51.56737,-0.58155],[51.56473,-0.58274],[51.56508,-0.58448],[51.56787,-0.58282],[51.56939,-0.58498],[51.57605,-0.58254],[51.57925,-0.58277],[51.58239,-0.58755],[51.58839,-0.60759],[51.59514,-0.59572],[51.59162,-0.5863],[51.59156,-0.57664],[51.5929,-0.5743],[51.59088,-0.56478],[51.59254,-0.56473],[51.59045,-0.55844],[51.59256,-0.56191],[51.59184,-0.55878],[51.59453,-0.55511],[51.59319,-0.55431],[51.59415,-0.55454],[51.59403,-0.55008],[51.60095,-0.55221],[51.59754,-0.54956],[51.59687,-0.5464],[51.59236,-0.5436],[51.5956,-0.54071],[51.60216,-0.54118],[51.60329,-0.53889],[51.60398,-0.53936],[51.60456,-0.53739],[51.60032,-0.53425],[51.60117,-0.53018],[51.61244,-0.52702],[51.61257,-0.52928],[51.61443,-0.52791],[51.61366,-0.52624],[51.60184,-0.52059],[51.6001,-0.51665]]],[[[51.6421,-0.8033],[51.6422,-0.79764],[51.63923,-0.79057],[51.63967,-0.78802],[51.63792,-0.78385],[51.63922,-0.78321],[51.63693,-0.77378],[51.63541,-0.77253],[51.63497,-0.76579],[51.63346,-0.76149],[51.63171,-0.76237],[51.62486,-0.74184],[51.62212,-0.74546],[51.62043,-0.74084],[51.61809,-0.74233],[51.61851,-0.7395],[51.61638,-0.73329],[51.61573,-0.73548],[51.61151,-0.7347],[51.61456,-0.75339],[51.61262,-0.76859],[51.60896,-0.77091],[51.60811,-0.77344],[51.60934,-0.77615],[51.6094,-0.79112],[51.61146,-0.7977],[51.61219,-0.79635],[51.62423,-0.82373],[51.62893,-0.82866],[51.63315,-0.82388],[51.63922,-0.80591],[51.64307,-0.80603],[51.6421,-0.8033]]],[[[51.73332,-0.76348],[51.72984,-0.75098],[51.72467,-0.74904],[51.72123,-0.74568],[51.72173,-0.74256],[51.72414,-0.74238],[51.72297,-0.74156],[51.71877,-0.72825],[51.71687,-0.72993],[51.713,-0.71883],[51.70793,-0.71641],[51.7079,-0.71749],[51.70579,-0.71675],[51.70237,-0.7197],[51.70264,-0.71618],[51.70162,-0.72135],[51.70062,-0.72],[51.6982,-0.72223],[51.69537,-0.71937],[51.68681,-0.72542],[51.67941,-0.72236],[51.68019,-0.72974],[51.67913,-0.73628],[51.67398,-0.74805],[51.67534,-0.75429],[51.67926,-0.75855],[51.67614,-0.75744],[51.67863,-0.76295],[51.68145,-0.76184],[51.6852,-0.7663],[51.68766,-0.76602],[51.69117,-0.77395],[51.69629,-0.77214],[51.69769,-0.77035],[51.69882,-0.77147],[51.70317,-0.78143],[51.70984,-0.78856],[51.70931,-0.79245],[51.71561,-0.79569],[51.71441,-0.79369],[51.72079,-0.79551],[51.7225,-0.78972],[51.73319,-0.79222],[51.73139,-0.78233],[51.72901,-0.78112],[51.72706,-0.77809],[51.73113,-0.77955],[51.73119,-0.76713],[51.73435,-0.76769],[51.73332,-0.76348]]]];
 
 // --- Point-in-catchment filtering: the map-key checkboxes act as filters, not ---
-// --- just visual overlays. A listing is shown only if it falls inside at ---
-// --- least one of the currently-checked catchment polygons (standard ray- ---
-// --- casting / even-odd rule; jhgsPriorityB and rgsPriorityB are multi-part ---
-// --- polygons — array of polygons, each an array of rings — so those are ---
-// --- tested ring-by-ring and OR'd across parts). ---
+// --- just visual overlays. A listing is shown only if it falls inside at     ---
+// --- least one of the currently-checked catchment polygons (standard ray-    ---
+// --- casting / even-odd rule; jhgsPriorityB and rgsPriorityB are multi-part   ---
+// --- polygons — array of polygons, each an array of rings — so those are     ---
+// --- tested ring-by-ring and OR'd across parts).                              ---
 function pointInRing(lat, lng, ring) {
-let inside = false;
-for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-const yi = ring[i][0], xi = ring[i][1];
-const yj = ring[j][0], xj = ring[j][1];
-const intersect = ((yi > lat) !== (yj > lat)) &&
-(lng < (xj - xi) * (lat - yi) / (yj - yi) + xi);
-if (intersect) inside = !inside;
-}
-return inside;
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const yi = ring[i][0], xi = ring[i][1];
+    const yj = ring[j][0], xj = ring[j][1];
+    const intersect = ((yi > lat) !== (yj > lat)) &&
+      (lng < (xj - xi) * (lat - yi) / (yj - yi) + xi);
+    if (intersect) inside = !inside;
+  }
+  return inside;
 }
 function pointInMultiPolygon(lat, lng, multi) {
-return multi.some(polygon => {
-let inside = false;
-polygon.forEach(ring => { if (pointInRing(lat, lng, ring)) inside = !inside; });
-return inside;
-});
+  return multi.some(polygon => {
+    let inside = false;
+    polygon.forEach(ring => { if (pointInRing(lat, lng, ring)) inside = !inside; });
+    return inside;
+  });
 }
 function inBeaconsfieldCatchment(p) { return pointInRing(p.lat, p.lng, beaconsfieldHighCatchment); }
 function inJHGSCatchment(p) { return pointInRing(p.lat, p.lng, jhgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, jhgsPriorityB); }
 function inRGSCatchment(p) { return pointInRing(p.lat, p.lng, rgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, rgsPriorityB); }
 properties.forEach(p => {
-p._inBeac = inBeaconsfieldCatchment(p);
-p._inJHGS = inJHGSCatchment(p);
-p._inRGS = inRGSCatchment(p);
+  p._inBeac = inBeaconsfieldCatchment(p);
+  p._inJHGS = inJHGSCatchment(p);
+  p._inRGS = inRGSCatchment(p);
 });
 
 const map = L.map('map', { zoomControl: true }).setView([51.60, -0.55], 11);
