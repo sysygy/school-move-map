@@ -101,7 +101,16 @@ header p { font-size:11.5px; }
 </table>
 <div class="note">These are single-year (Sept 2024 entry) reference points, not guarantees — qualifying distances move with applicant numbers each year. Bucks Council's checker tool explicitly supports "checking previous years' allocation results" for a longer trend; worth pulling 2-3 years before relying on a distance-based (rather than in-catchment) place.</div>
 </div>
-<h3 id="prop-count-heading" style="font-size:14px; margin:14px 0 8px;">Shortlisted properties (21)</h3>
+<div class="legend-row" style="margin:14px 0 6px; display:flex; align-items:center; gap:8px;">
+<label for="sort-select" style="font-size:12.5px; color:#555; white-space:nowrap;">Sort by:</label>
+<select id="sort-select" style="flex:1; font-size:12.5px; padding:4px 6px; border:1px solid #ccc; border-radius:4px; background:#fff;">
+<option value="total" selected>Best total commute (AM+PM)</option>
+<option value="am">Fastest AM drop-off</option>
+<option value="pm">Fastest PM pickup</option>
+<option value="default">Default (as listed)</option>
+</select>
+</div>
+<h3 id="prop-count-heading" style="font-size:14px; margin:8px 0 8px;">Shortlisted properties (21)</h3>
 <div id="prop-list"></div>
 <div class="note">Listings pulled from Rightmove and Zoopla on 16 Jul 2026. Pins are placed at street level (agents hide exact house numbers until enquiry) — click through for the precise address and to arrange viewings.</div>
 </div>
@@ -198,6 +207,13 @@ properties.forEach(p => {
   p._inBeac = inBeaconsfieldCatchment(p);
   p._inJHGS = inJHGSCatchment(p);
   p._inRGS = inRGSCatchment(p);
+  // Parse the numeric AM/PM minutes out of the "drive" string (e.g. "AM 32 min / PM 30 min · 13.2-13.8 mi")
+  // so listings can be sorted by commute time. Falls back to null (sorts last) if a drive string
+  // doesn't match the expected AM/PM format.
+  const driveMatch = p.drive.match(/AM\s+(\d+)\s*min\s*\/\s*PM\s+(\d+)\s*min/i);
+  p._am = driveMatch ? parseInt(driveMatch[1], 10) : null;
+  p._pm = driveMatch ? parseInt(driveMatch[2], 10) : null;
+  p._total = (p._am !== null && p._pm !== null) ? p._am + p._pm : null;
 });
 
 const map = L.map('map', { zoomControl: true }).setView([51.60, -0.55], 11);
@@ -264,7 +280,8 @@ const propMarkers = [];
 properties.forEach((p, i) => {
 const m = L.marker([p.lat, p.lng], {icon: propIcon}).addTo(map);
 const rmUrl = p.url;
-m.bindPopup(`<b>£${p.price.toLocaleString()} pcm</b> — ${p.beds} bed ${p.type}<br>${p.addr}<br>Agent: ${p.agent}<br>Drive to PHS: ${p.drive}<br><a href="${rmUrl}" target="_blank" rel="noopener">${p.source === 'zoopla' ? 'View on Zoopla' : 'View on Rightmove'} &rarr;</a>`);
+const totalStr = p._total !== null ? ` (${p._total} min total)` : '';
+m.bindPopup(`<b>£${p.price.toLocaleString()} pcm</b> — ${p.beds} bed ${p.type}<br>${p.addr}<br>Agent: ${p.agent}<br>Drive to PHS: ${p.drive}${totalStr}<br><a href="${rmUrl}" target="_blank" rel="noopener">${p.source === 'zoopla' ? 'View on Zoopla' : 'View on Rightmove'} &rarr;</a>`);
 propMarkers.push(m);
 });
 
@@ -288,9 +305,10 @@ properties.forEach((p, i) => {
 const div = document.createElement('div');
 div.className = 'prop-card';
 const rmUrl = p.url;
+const totalStr = p._total !== null ? ` (${p._total} min total)` : '';
 div.innerHTML = `
 <div class="addr">${p.addr}<span class="badge ${areaBadge[p.area]}">${p.area}</span></div>
-<div class="meta">${p.beds} bed · ${p.baths} bath · ${p.type} · Drive to PHS: ${p.drive}</div>
+<div class="meta">${p.beds} bed · ${p.baths} bath · ${p.type} · Drive to PHS: ${p.drive}${totalStr}</div>
 <div class="price">£${p.price.toLocaleString()} pcm</div>
 <div class="meta" style="margin-top:4px;">${p.desc}</div>
 <a href="${rmUrl}" target="_blank" rel="noopener">${p.source === 'zoopla' ? 'View on Zoopla' : 'View on Rightmove'} &rarr;</a>
@@ -303,6 +321,30 @@ propMarkers[i].openPopup();
 listEl.appendChild(div);
 propCards.push(div);
 });
+
+// Sort the sidebar listing cards by commute time to PHS. Re-ordering only touches the
+// DOM position of each already-created card (via appendChild, which moves an existing
+// node rather than cloning it) — it doesn't change the properties/propCards/propMarkers
+// index correspondence that applyCatchmentFilter() relies on, so the two features compose
+// cleanly regardless of which runs first or how often either re-runs.
+function sortListings(mode) {
+  const order = properties.map((p, i) => i);
+  const cmp = (key) => (a, b) => {
+    const va = properties[a][key], vb = properties[b][key];
+    if (va === null && vb === null) return 0;
+    if (va === null) return 1;
+    if (vb === null) return -1;
+    return va - vb;
+  };
+  if (mode === 'total') order.sort(cmp('_total'));
+  else if (mode === 'am') order.sort(cmp('_am'));
+  else if (mode === 'pm') order.sort(cmp('_pm'));
+  // mode === 'default' leaves the original array order untouched
+  order.forEach(i => listEl.appendChild(propCards[i]));
+}
+const sortSelect = document.getElementById('sort-select');
+sortSelect.addEventListener('change', e => sortListings(e.target.value));
+sortListings(sortSelect.value);
 
 // Apply the catchment checkboxes as a filter over the pins and sidebar cards:
 // a listing stays visible only if it's inside at least one currently-checked
