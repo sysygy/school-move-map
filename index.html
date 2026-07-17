@@ -1,3 +1,7 @@
+Title: 
+URL: https://raw.githubusercontent.com/sysygy/school-move-map/main/index.html
+Source element: <body>
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +65,7 @@ header p { font-size:11.5px; }
 <div id="app">
 <header>
 <h1>Where to rent: Beaconsfield High / RGS / JHGS catchment, commuting to Pinner High School</h1>
-<p>22 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 16 Jul 2026</p>
+<p>24 live rental listings (2+ bed houses, ≤ £3,500 pcm) inside the shared catchment zone — added 17 Jul 2026</p>
 </header>
 <div id="main">
 <div id="map"></div>
@@ -125,12 +129,11 @@ const schools = [
 ];
 
 const properties = [
-{addr:"Maltings Way, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6013, lng:-0.6408, price:2450, beds:3, baths:2, type:"Terraced mews", agent:"Winkworth, Beaconsfield", id:"160174247", drive:"AM 32 min / PM 30 min · 13.2-13.8 mi", desc:"Spacious 3-bed, 2-bath mews house in the heart of Beaconsfield Old Town.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/160174247#/?channel=RES_LET"},
 {addr:"Windsor End, Beaconsfield, HP9", area:"Beaconsfield", lat:51.598486, lng:-0.635078, price:3100, beds:3, baths:2, type:"End of terrace", agent:"Bovingdons, Beaconsfield", id:"90071061", drive:"AM 32 min / PM 30 min · 13.3-13.9 mi", desc:"3-bed mews-style cottage in a small gated development off Windsor End.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90071061#/?channel=RES_LET"},
 {addr:"Shrimpton Close, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6248278, lng:-0.6466719, price:3200, beds:5, baths:2, type:"Detached", agent:"Winkworth, Beaconsfield", id:"89958153", drive:"AM 38 min / PM 35 min · 15.2-15.8 mi", desc:"5-bed detached on a quiet cul-de-sac close to open countryside.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89958153#/?channel=RES_LET"},
 {addr:"Candlemas Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6060444, lng:-0.6369125, price:2950, beds:3, baths:1, type:"Detached", agent:"Bartrams, Beaconsfield", id:"72770477", drive:"AM 32 min / PM 29 min · 13.2-13.8 mi", desc:"Charming 1950s 3/4-bed detached family home on a 0.34-acre plot, garage, large rear garden. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/72770477/"},
 {addr:"Meadow Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6066444, lng:-0.6344409, price:3500, beds:4, baths:2, type:"Detached", agent:"Tim Russ & Co, Beaconsfield", id:"90938445", drive:"AM 33 min / PM 30 min · 13.1-13.8 mi", desc:"Beautifully presented modern 4-bed, 2-bath detached house in a quiet residential private road, convenient for Old Town and New Town. At budget cap.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90938445#/?channel=RES_LET"},
-{addr:"Howard Crescent, Seer Green, HP9", area:"Seer Green", lat:51.6204842, lng:-0.6072469, price:2100, beds:2, baths:1, type:"Detached bungalow", agent:"Tim Russ & Co, Beaconsfield", id:"73707605", drive:"AM 37 min / PM 34 min · 15.1-16.0 mi", desc:"No onward chain, detached bungalow, two double bedrooms, 25ft sitting/dining room, garage. Zoopla-only listing.", source:"zoopla", url:"https://www.zoopla.co.uk/to-rent/details/73707605/"},
+{addr:"Howard Crescent, Seer Green, HP9", area:"Seer Green", lat:51.6204842, lng:-0.6072469, price:2100, beds:2, baths:1, type:"Detached bungalow", agent:"Tim Russ & Co, Beaconsfield", id:"90832422", drive:"AM 37 min / PM 34 min · 15.1-16.0 mi", desc:"No onward chain, detached bungalow, two double bedrooms, 25ft sitting/dining room, garage.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90832422#/?channel=RES_LET"},
 {addr:"Pinewood Close, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.5791131, lng:-0.5540325, price:2300, beds:2, baths:1, type:"Terraced", agent:"Gibbs Gillespie, Gerrards Cross", id:"89750142", drive:"AM 27 min / PM 25 min · 8.4-8.5 mi", desc:"2 double-bedroom cottage in a pleasant cul-de-sac.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89750142#/?channel=RES_LET"},
 {addr:"Oak End Way, Gerrards Cross, SL9", area:"Gerrards Cross", lat:51.58784, lng:-0.5482287, price:2550, beds:3, baths:2, type:"Semi-detached", agent:"The Frost Partnership, Gerrards Cross", id:"89437350", drive:"AM 29 min / PM 25 min · 8.7-9.0 mi", desc:"2/3-bed house in the heart of Gerrards Cross with enclosed garden.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/89437350#/?channel=RES_LET"},
 {addr:"Bentinck Close, Gerrards Cross", area:"Gerrards Cross", lat:51.5896548, lng:-0.5638865, price:2775, beds:3, baths:1, type:"End of terrace", agent:"Foreman King, Farnham Common", id:"164581136", drive:"AM 30 min / PM 28 min · 9.2-9.9 mi", desc:"3-bed Georgian-style home, gated footpath shortcut to town centre and station.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/164581136#/?channel=RES_LET"},
@@ -146,7 +149,10 @@ const properties = [
 {addr:"Kings Mill Way, Denham, UB9", area:"Denham", lat:51.5522515, lng:-0.4840419, price:3500, beds:4, baths:3, type:"Terraced", agent:"Sky Horizon, London", id:"172537796", drive:"AM 24 min / PM 22 min · 5.8-6.8 mi", desc:"Luxury waterfront living, gated concierge-serviced community, Kings Island development. At budget cap.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/172537796#/?channel=RES_LET"},
 {addr:"Orchard Close, Denham, Uxbridge, UB9", area:"Denham", lat:51.553564, lng:-0.4907375, price:2400, beds:3, baths:2, type:"Terraced", agent:"Coopers, Hillingdon", id:"90706971", drive:"AM 24 min / PM 22 min · 6.1-6.6 mi", desc:"Well-presented 3-bed mid-terrace in a gated development, walking distance to Uxbridge Underground station, easy M4/M40/M25 access.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90706971#/?channel=RES_LET"},
 {addr:"Celia Johnson Close, Denham, Uxbridge, UB9", area:"Denham", lat:51.5875444, lng:-0.4979566, price:3250, beds:4, baths:3, type:"Semi-detached", agent:"Gibbs Gillespie, Gerrards Cross", id:"90909279", drive:"AM 28 min / PM 25 min · 7.3-7.6 mi", desc:"Contemporary semi-detached townhouse, 4 bedrooms, west-facing garden, off-street parking and garage.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90909279#/?channel=RES_LET"},
-{addr:"Hollybush Lane, Tatling End, UB9", area:"Denham", lat:51.572261, lng:-0.526427, price:2500, beds:4, baths:3, type:"Semi-detached", agent:"The Havn Group Real Estate, Slough", id:"11816220", drive:"AM 25 min / PM 23 min · 7.1-7.7 mi", desc:"4-bed semi-detached family home in Tatling End (Denham/Gerrards Cross border), en-suite to main bedroom, study, private garden, driveway, garage nearby.", source:"onthemarket", url:"https://www.onthemarket.com/details/11816220/"}
+{addr:"Hollybush Lane, Tatling End, UB9", area:"Denham", lat:51.572261, lng:-0.526427, price:2500, beds:4, baths:3, type:"Semi-detached", agent:"The Havn Group Real Estate, Slough", id:"11816220", drive:"AM 25 min / PM 23 min · 7.1-7.7 mi", desc:"4-bed semi-detached family home in Tatling End (Denham/Gerrards Cross border), en-suite to main bedroom, study, private garden, driveway, garage nearby.", source:"onthemarket", url:"https://www.onthemarket.com/details/11816220/"},
+{addr:"Shepherds Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6036435, lng:-0.6351948, price:2950, beds:4, baths:3, type:"Semi-detached", agent:"Ashington Page, Beaconsfield", id:"90971337", drive:"AM 32 min / PM 29 min · 13.2-13.8 mi", desc:"Spacious four-bedroom, three-bathroom semi-detached property with a large lounge/dining room.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/90971337#/?channel=RES_LET"},
+{addr:"Lakes Lane, Beaconsfield, HP9", area:"Beaconsfield", lat:51.6001352, lng:-0.6309167, price:1995, beds:2, baths:1, type:"Terraced", agent:"Winkworth, Beaconsfield", id:"85364454", drive:"AM 31 min / PM 29 min · 13.0-13.6 mi", desc:"Recently refurbished two-bedroom cottage with a lawned westerly-facing garden in Beaconsfield Old Town.", source:"rightmove", url:"https://www.rightmove.co.uk/properties/85364454#/?channel=RES_LET"},
+{addr:"Orchard Close, Denham, UB9", area:"Denham", lat:51.553898, lng:-0.490795, price:2300, beds:3, baths:1, type:"Terraced", agent:"Ashley & Webb, Hayes", id:"18134978", drive:"AM 24 min / PM 22 min · 6.0-6.6 mi", desc:"Well-proportioned 3-bed terraced house on a peaceful cul-de-sac with private driveway parking. OnTheMarket-only listing.", source:"onthemarket", url:"https://www.onthemarket.com/details/18134978/"}
 ];
 
 const areaBadge = {"Beaconsfield":"b-beac","Seer Green":"b-seer","Gerrards Cross":"b-gx","Denham":"b-den"};
@@ -179,43 +185,43 @@ const rgsPriorityA = [[51.63445,-0.82091],[51.63223,-0.82554],[51.62893,-0.82866
 const rgsPriorityB = [[[[51.6001,-0.51665],[51.59969,-0.5006],[51.59444,-0.49857],[51.59214,-0.49954],[51.58812,-0.49574],[51.58478,-0.49483],[51.58177,-0.4896],[51.57962,-0.48855],[51.57815,-0.48947],[51.57646,-0.48806],[51.57513,-0.48403],[51.57384,-0.48553],[51.5712,-0.48401],[51.56687,-0.48476],[51.56573,-0.48258],[51.56282,-0.48279],[51.56178,-0.48075],[51.56071,-0.48104],[51.55924,-0.47663],[51.55487,-0.47772],[51.55003,-0.4866],[51.54633,-0.48937],[51.54612,-0.49135],[51.54141,-0.49205],[51.54465,-0.49505],[51.54618,-0.49897],[51.55456,-0.51066],[51.55494,-0.51579],[51.55761,-0.52118],[51.55854,-0.52707],[51.55869,-0.53006],[51.55734,-0.52925],[51.5579,-0.53596],[51.55685,-0.53873],[51.55766,-0.54613],[51.56721,-0.543],[51.56624,-0.54557],[51.56704,-0.55138],[51.56414,-0.55369],[51.56768,-0.56261],[51.56565,-0.5644],[51.5651,-0.56297],[51.56748,-0.5701],[51.56577,-0.57551],[51.56737,-0.58155],[51.56473,-0.58274],[51.56508,-0.58448],[51.56787,-0.58282],[51.56939,-0.58498],[51.57605,-0.58254],[51.57925,-0.58277],[51.58239,-0.58755],[51.58839,-0.60759],[51.59514,-0.59572],[51.59162,-0.5863],[51.59156,-0.57664],[51.5929,-0.5743],[51.59088,-0.56478],[51.59254,-0.56473],[51.59045,-0.55844],[51.59256,-0.56191],[51.59184,-0.55878],[51.59453,-0.55511],[51.59319,-0.55431],[51.59415,-0.55454],[51.59403,-0.55008],[51.60095,-0.55221],[51.59754,-0.54956],[51.59687,-0.5464],[51.59236,-0.5436],[51.5956,-0.54071],[51.60216,-0.54118],[51.60329,-0.53889],[51.60398,-0.53936],[51.60456,-0.53739],[51.60032,-0.53425],[51.60117,-0.53018],[51.61244,-0.52702],[51.61257,-0.52928],[51.61443,-0.52791],[51.61366,-0.52624],[51.60184,-0.52059],[51.6001,-0.51665]]],[[[51.6421,-0.8033],[51.6422,-0.79764],[51.63923,-0.79057],[51.63967,-0.78802],[51.63792,-0.78385],[51.63922,-0.78321],[51.63693,-0.77378],[51.63541,-0.77253],[51.63497,-0.76579],[51.63346,-0.76149],[51.63171,-0.76237],[51.62486,-0.74184],[51.62212,-0.74546],[51.62043,-0.74084],[51.61809,-0.74233],[51.61851,-0.7395],[51.61638,-0.73329],[51.61573,-0.73548],[51.61151,-0.7347],[51.61456,-0.75339],[51.61262,-0.76859],[51.60896,-0.77091],[51.60811,-0.77344],[51.60934,-0.77615],[51.6094,-0.79112],[51.61146,-0.7977],[51.61219,-0.79635],[51.62423,-0.82373],[51.62893,-0.82866],[51.63315,-0.82388],[51.63922,-0.80591],[51.64307,-0.80603],[51.6421,-0.8033]]],[[[51.73332,-0.76348],[51.72984,-0.75098],[51.72467,-0.74904],[51.72123,-0.74568],[51.72173,-0.74256],[51.72414,-0.74238],[51.72297,-0.74156],[51.71877,-0.72825],[51.71687,-0.72993],[51.713,-0.71883],[51.70793,-0.71641],[51.7079,-0.71749],[51.70579,-0.71675],[51.70237,-0.7197],[51.70264,-0.71618],[51.70162,-0.72135],[51.70062,-0.72],[51.6982,-0.72223],[51.69537,-0.71937],[51.68681,-0.72542],[51.67941,-0.72236],[51.68019,-0.72974],[51.67913,-0.73628],[51.67398,-0.74805],[51.67534,-0.75429],[51.67926,-0.75855],[51.67614,-0.75744],[51.67863,-0.76295],[51.68145,-0.76184],[51.6852,-0.7663],[51.68766,-0.76602],[51.69117,-0.77395],[51.69629,-0.77214],[51.69769,-0.77035],[51.69882,-0.77147],[51.70317,-0.78143],[51.70984,-0.78856],[51.70931,-0.79245],[51.71561,-0.79569],[51.71441,-0.79369],[51.72079,-0.79551],[51.7225,-0.78972],[51.73319,-0.79222],[51.73139,-0.78233],[51.72901,-0.78112],[51.72706,-0.77809],[51.73113,-0.77955],[51.73119,-0.76713],[51.73435,-0.76769],[51.73332,-0.76348]]]];
 
 // --- Point-in-catchment filtering: the map-key checkboxes act as filters, not ---
-// --- just visual overlays. A listing is shown only if it falls inside at     ---
-// --- least one of the currently-checked catchment polygons (standard ray-    ---
-// --- casting / even-odd rule; jhgsPriorityB and rgsPriorityB are multi-part   ---
-// --- polygons — array of polygons, each an array of rings — so those are     ---
-// --- tested ring-by-ring and OR'd across parts).                              ---
+// --- just visual overlays. A listing is shown only if it falls inside at ---
+// --- least one of the currently-checked catchment polygons (standard ray- ---
+// --- casting / even-odd rule; jhgsPriorityB and rgsPriorityB are multi-part ---
+// --- polygons — array of polygons, each an array of rings — so those are ---
+// --- tested ring-by-ring and OR'd across parts). ---
 function pointInRing(lat, lng, ring) {
-  let inside = false;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const yi = ring[i][0], xi = ring[i][1];
-    const yj = ring[j][0], xj = ring[j][1];
-    const intersect = ((yi > lat) !== (yj > lat)) &&
-      (lng < (xj - xi) * (lat - yi) / (yj - yi) + xi);
-    if (intersect) inside = !inside;
-  }
-  return inside;
+let inside = false;
+for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+const yi = ring[i][0], xi = ring[i][1];
+const yj = ring[j][0], xj = ring[j][1];
+const intersect = ((yi > lat) !== (yj > lat)) &&
+(lng < (xj - xi) * (lat - yi) / (yj - yi) + xi);
+if (intersect) inside = !inside;
+}
+return inside;
 }
 function pointInMultiPolygon(lat, lng, multi) {
-  return multi.some(polygon => {
-    let inside = false;
-    polygon.forEach(ring => { if (pointInRing(lat, lng, ring)) inside = !inside; });
-    return inside;
-  });
+return multi.some(polygon => {
+let inside = false;
+polygon.forEach(ring => { if (pointInRing(lat, lng, ring)) inside = !inside; });
+return inside;
+});
 }
 function inBeaconsfieldCatchment(p) { return pointInRing(p.lat, p.lng, beaconsfieldHighCatchment); }
 function inJHGSCatchment(p) { return pointInRing(p.lat, p.lng, jhgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, jhgsPriorityB); }
 function inRGSCatchment(p) { return pointInRing(p.lat, p.lng, rgsPriorityA) || pointInMultiPolygon(p.lat, p.lng, rgsPriorityB); }
 properties.forEach(p => {
-  p._inBeac = inBeaconsfieldCatchment(p);
-  p._inJHGS = inJHGSCatchment(p);
-  p._inRGS = inRGSCatchment(p);
-  // Parse the numeric AM/PM minutes out of the "drive" string (e.g. "AM 32 min / PM 30 min · 13.2-13.8 mi")
-  // so listings can be sorted by commute time. Falls back to null (sorts last) if a drive string
-  // doesn't match the expected AM/PM format.
-  const driveMatch = p.drive.match(/AM\s+(\d+)\s*min\s*\/\s*PM\s+(\d+)\s*min/i);
-  p._am = driveMatch ? parseInt(driveMatch[1], 10) : null;
-  p._pm = driveMatch ? parseInt(driveMatch[2], 10) : null;
-  p._total = (p._am !== null && p._pm !== null) ? p._am + p._pm : null;
+p._inBeac = inBeaconsfieldCatchment(p);
+p._inJHGS = inJHGSCatchment(p);
+p._inRGS = inRGSCatchment(p);
+// Parse the numeric AM/PM minutes out of the "drive" string (e.g. "AM 32 min / PM 30 min · 13.2-13.8 mi")
+// so listings can be sorted by commute time. Falls back to null (sorts last) if a drive string
+// doesn't match the expected AM/PM format.
+const driveMatch = p.drive.match(/AM\s+(\d+)\s*min\s*\/\s*PM\s+(\d+)\s*min/i);
+p._am = driveMatch ? parseInt(driveMatch[1], 10) : null;
+p._pm = driveMatch ? parseInt(driveMatch[2], 10) : null;
+p._total = (p._am !== null && p._pm !== null) ? p._am + p._pm : null;
 });
 
 const map = L.map('map', { zoomControl: true }).setView([51.60, -0.55], 11);
@@ -330,19 +336,19 @@ propCards.push(div);
 // index correspondence that applyCatchmentFilter() relies on, so the two features compose
 // cleanly regardless of which runs first or how often either re-runs.
 function sortListings(mode) {
-  const order = properties.map((p, i) => i);
-  const cmp = (key) => (a, b) => {
-    const va = properties[a][key], vb = properties[b][key];
-    if (va === null && vb === null) return 0;
-    if (va === null) return 1;
-    if (vb === null) return -1;
-    return va - vb;
-  };
-  if (mode === 'total') order.sort(cmp('_total'));
-  else if (mode === 'am') order.sort(cmp('_am'));
-  else if (mode === 'pm') order.sort(cmp('_pm'));
-  // mode === 'default' leaves the original array order untouched
-  order.forEach(i => listEl.appendChild(propCards[i]));
+const order = properties.map((p, i) => i);
+const cmp = (key) => (a, b) => {
+const va = properties[a][key], vb = properties[b][key];
+if (va === null && vb === null) return 0;
+if (va === null) return 1;
+if (vb === null) return -1;
+return va - vb;
+};
+if (mode === 'total') order.sort(cmp('_total'));
+else if (mode === 'am') order.sort(cmp('_am'));
+else if (mode === 'pm') order.sort(cmp('_pm'));
+// mode === 'default' leaves the original array order untouched
+order.forEach(i => listEl.appendChild(propCards[i]));
 }
 const sortSelect = document.getElementById('sort-select');
 sortSelect.addEventListener('change', e => sortListings(e.target.value));
@@ -371,12 +377,5 @@ if (propCountHeading) propCountHeading.textContent = `Shortlisted properties (${
 applyCatchmentFilter();
 
 // Mobile browsers sometimes finish laying out the stacked #map div (from the
-// @media rule) after Leaflet has already measured it, which leaves the tiles
-// rendered at the wrong size or blank until the user pinches/drags. Force a
-// re-measure shortly after load and on any orientation/resize change.
-setTimeout(() => map.invalidateSize(), 300);
-window.addEventListener('resize', () => map.invalidateSize());
-window.addEventListener('orientationchange', () => setTimeout(() => map.invalidateSize(), 300));
-</script>
-</body>
-</html>
+
+[output truncated at 50000 of 50414 characters. Pass a larger max_chars (default 50000) to see more, or use read_page with a ref_id to focus on a smaller section.]
